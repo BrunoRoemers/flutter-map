@@ -10,7 +10,10 @@ class CountryName {
   final String common;
   final String official;
 
-  CountryName({required this.common, required this.official});
+  CountryName({
+    required this.common,
+    required this.official,
+  });
 
   factory CountryName.fromJson(Map<String, dynamic> json) =>
       _$CountryNameFromJson(json);
@@ -19,11 +22,30 @@ class CountryName {
 }
 
 @JsonSerializable()
+class CapitalInfo {
+  final List<double> latlng;
+
+  CapitalInfo({
+    required this.latlng,
+  });
+
+  factory CapitalInfo.fromJson(Map<String, dynamic> json) =>
+      _$CapitalInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CapitalInfoToJson(this);
+}
+
+@JsonSerializable()
 class Country {
   final CountryName name;
   final List<String> capital;
+  final CapitalInfo capitalInfo;
 
-  Country({required this.name, required this.capital});
+  Country({
+    required this.name,
+    required this.capital,
+    required this.capitalInfo,
+  });
 
   factory Country.fromJson(Map<String, dynamic> json) =>
       _$CountryFromJson(json);
@@ -32,7 +54,8 @@ class Country {
 }
 
 Future<List<Country>> fetchAllCountries() async {
-  const url = 'https://restcountries.com/v3.1/all?fields=name,capital';
+  const url =
+      'https://restcountries.com/v3.1/all?fields=name,capital,capitalInfo';
 
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
@@ -42,9 +65,8 @@ Future<List<Country>> fetchAllCountries() async {
             Country.fromJson(country as Map<String, dynamic>))
         .toList();
   } else {
-    final message =
-        'Failed to load countries: $url returned status code ${response.statusCode}';
-    print(message); // TODO use logging framework
-    throw Exception(message);
+    throw Exception(
+      'Failed to load countries: $url returned status code ${response.statusCode}',
+    );
   }
 }

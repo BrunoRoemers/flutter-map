@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
         future: countries,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print(snapshot.error);
             return const ErrorText(error: "failed to load countries");
           }
 
