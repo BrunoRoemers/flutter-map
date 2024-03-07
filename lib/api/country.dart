@@ -42,7 +42,9 @@ Future<List<Country>> fetchAllCountries() async {
             Country.fromJson(country as Map<String, dynamic>))
         .toList();
   } else {
-    throw Exception(
-        'Failed to load countries: $url returned status code ${response.statusCode}');
+    final message =
+        'Failed to load countries: $url returned status code ${response.statusCode}';
+    print(message); // TODO use logging framework
+    throw Exception(message);
   }
 }

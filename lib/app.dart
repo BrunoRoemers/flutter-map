@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'api/country.dart';
 import 'screens/home.dart';
 
 class App extends StatelessWidget {
@@ -25,6 +24,4 @@ class App extends StatelessWidget {
   }
 }
 
-class AppState extends ChangeNotifier {
-  final List<Country> countries = [];
-}
+class AppState extends ChangeNotifier {}
