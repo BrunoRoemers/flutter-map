@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../atoms/map.dart';
+import '../atoms/marker_map.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Map(),
+      child: MarkerMap(),
     );
   }
 }
