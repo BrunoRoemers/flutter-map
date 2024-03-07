@@ -17,7 +17,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return Scaffold(
+      body: FutureBuilder(
         future: countries,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -43,8 +44,8 @@ class _HomeState extends State<Home> {
             return true;
           }).map((country) {
             return Marker(
-              markerId:
-                  MarkerId("${country.capital.first} (${country.name.common})"),
+                markerId: MarkerId(
+                    "${country.capital.first} (${country.name.common})"),
               position: LatLng(
                 country.capitalInfo.latlng[0],
                 country.capitalInfo.latlng[1],
@@ -57,7 +58,8 @@ class _HomeState extends State<Home> {
               markers: markers,
             ),
           );
-        });
+          }),
+    );
   }
 
   @override

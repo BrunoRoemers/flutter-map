@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/home.dart';
+import 'screens/country_detail.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,9 +16,8 @@ class App extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         ),
-        home: const Scaffold(
-          body: Home(),
-        ),
+        // home: const Home(),
+        home: const CountryDetail(),
       ),
     );
   }
