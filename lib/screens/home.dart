@@ -29,14 +29,32 @@ class _HomeState extends State<Home> {
             return const Center(child: CircularProgressIndicator());
           }
 
+          final markers = snapshot.data!.where((country) {
+            if (country.capital.isEmpty) {
+              print('No capital for ${country.name.common}');
+              return false;
+            }
+
+            if (country.capitalInfo.latlng.isEmpty) {
+              print('No latlng for ${country.name.common}');
+              return false;
+            }
+
+            return true;
+          }).map((country) {
+            return Marker(
+              markerId:
+                  MarkerId("${country.capital.first} (${country.name.common})"),
+              position: LatLng(
+                country.capitalInfo.latlng[0],
+                country.capitalInfo.latlng[1],
+              ),
+            );
+          }).toSet();
+
           return Center(
             child: MarkerMap(
-              markers: {
-                const Marker(
-                  markerId: MarkerId('Brussels'),
-                  position: LatLng(50.84678574085057, 4.35243753639113),
-                )
-              },
+              markers: markers,
             ),
           );
         });
