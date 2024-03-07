@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CountryDetail extends StatelessWidget {
-  const CountryDetail({super.key});
+  final String country;
+
+  const CountryDetail({
+    super.key,
+    required this.country,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Detail'),
+        child: ElevatedButton(
+          child: const Text('Open route'),
+          onPressed: () {
+            print('pressed $country');
+            // Navigate to second route when tapped.
+          },
+        ),
       ),
     );
   }
