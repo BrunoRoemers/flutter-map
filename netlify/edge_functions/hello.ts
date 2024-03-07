@@ -1,4 +1,4 @@
-import jsonResponse from "./utils/json_response";
+import jsonResponse from "./utils/json_response.ts";
 
 export default (request: Request) => {
   return jsonResponse(
