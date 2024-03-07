@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MarkerMap extends StatefulWidget {
-  const MarkerMap({super.key});
+  final Set<Marker> markers;
+
+  const MarkerMap({super.key, required this.markers});
 
   @override
   State<MarkerMap> createState() => _MarkerMapState();
@@ -20,7 +22,9 @@ class _MarkerMapState extends State<MarkerMap> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(target: _center, zoom: 5.0));
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(target: _center, zoom: 5.0),
+      markers: widget.markers,
+    );
   }
 }
