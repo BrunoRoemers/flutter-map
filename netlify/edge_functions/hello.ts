@@ -12,4 +12,5 @@ export default (request: Request) => {
 
 export const config = {
   path: "/api/v1/hello",
+  cache: "manual",
 };
