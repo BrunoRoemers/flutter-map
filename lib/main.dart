@@ -17,8 +17,13 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
       ),
       home: const Scaffold(
-        body: Center(
-          child: HelloWorld(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: HelloWorld(),
+            )
+          ],
         ),
       ),
     );
