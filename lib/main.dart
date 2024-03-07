@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/hello_world.dart';
+
+import 'map.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,14 +18,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
       ),
       home: const Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: HelloWorld(),
-            )
-          ],
-        ),
+        body: Map(),
       ),
     );
   }
