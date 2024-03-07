@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'map.dart';
+import 'screens/home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
       ),
       home: const Scaffold(
-        body: Map(),
+        body: Home(),
       ),
     );
   }
