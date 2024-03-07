@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/hello_world.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,10 +10,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+    return MaterialApp(
+      title: 'Flutter Map',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+      ),
+      home: const Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: HelloWorld(),
         ),
       ),
     );
