@@ -1,4 +1,6 @@
-import jsonResponse from "./utils/json_response.ts";
+import jsonResponseBuilder from "./utils/json_response.ts";
+
+const jsonResponse = jsonResponseBuilder([]);
 
 export default (request: Request) => {
   return jsonResponse(

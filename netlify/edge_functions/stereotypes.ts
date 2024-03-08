@@ -1,5 +1,7 @@
 import OpenAI from "https://deno.land/x/openai@v4.28.4/mod.ts";
-import jsonResponse from "./utils/json_response.ts";
+import jsonResponseBuilder from "./utils/json_response.ts";
+
+const jsonResponse = jsonResponseBuilder(['country']);
 
 const client = new OpenAI();
 
