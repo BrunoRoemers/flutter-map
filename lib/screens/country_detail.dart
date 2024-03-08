@@ -24,40 +24,53 @@ class _CountryDetailState extends State<CountryDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: stereotypes,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            print(snapshot.error);
-            return const ErrorText(error: "failed to load stereotypes");
-          }
+      body: SafeArea(
+        child: FutureBuilder(
+          future: stereotypes,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              print(snapshot.error);
+              return const ErrorText(error: "failed to load stereotypes");
+            }
 
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Country: ${widget.country}'),
-              Text('Capital: ${widget.capital}'),
-              const SizedBox(height: 30),
-              Container(
+            return ListView(
+              children: [
+                const SizedBox(height: 30),
+                Text(
+                  widget.country,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 40),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  widget.capital,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 30),
+                Container(
                   padding: const EdgeInsets.all(30),
                   color: Theme.of(context).primaryColorLight,
-                  child: Text(snapshot.data!.content)),
-              const SizedBox(height: 30),
-              Center(
-                child: ElevatedButton(
-                  child: const Text('Back'),
-                  onPressed: () {
-                    GoRouter.of(context).go('/');
-                  },
+                  child: Text(snapshot.data!.content),
                 ),
-              )
-            ],
-          );
-        },
+                const SizedBox(height: 30),
+                Center(
+                  child: ElevatedButton(
+                    child: const Text('Back'),
+                    onPressed: () {
+                      GoRouter.of(context).go('/');
+                    },
+                  ),
+                ),
+                const SizedBox(height: 30),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
