@@ -52,7 +52,9 @@ class _HomeState extends State<Home> {
                   country.capitalInfo.latlng[1],
                 ),
                 onTap: () {
-                  GoRouter.of(context).go('/country/${country.name.common}');
+                  GoRouter.of(context).go(
+                    '/country/${country.name.common}?capital=${country.capital.first}',
+                  );
                 },
               );
             }).toSet();

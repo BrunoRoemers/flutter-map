@@ -24,6 +24,7 @@ class App extends StatelessWidget {
                 return MaterialPage(
                   child: CountryDetail(
                     country: state.pathParameters['name']!,
+                    capital: state.uri.queryParameters['capital'] ?? '?',
                   ),
                 );
               },

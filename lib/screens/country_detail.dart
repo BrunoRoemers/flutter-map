@@ -6,10 +6,12 @@ import '../atoms/error_text.dart';
 
 class CountryDetail extends StatefulWidget {
   final String country;
+  final String capital;
 
   const CountryDetail({
     super.key,
     required this.country,
+    required this.capital,
   });
 
   @override
@@ -38,7 +40,7 @@ class _CountryDetailState extends State<CountryDetail> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Country: ${widget.country}'),
-              Text('Capital: TODO'),
+              Text('Capital: ${widget.capital}'),
               const SizedBox(height: 30),
               Container(
                   padding: const EdgeInsets.all(30),
